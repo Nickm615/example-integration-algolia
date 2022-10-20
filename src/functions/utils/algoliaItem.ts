@@ -49,6 +49,8 @@ const createRecordBlock = (allItems: ReadonlyMap<string, IContentItem>, parentCo
         case ElementType.RichText: {
           return element.value?.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').replace(/\n/g, ' ') ?? '';
         }
+        case ElementType.Custom:
+          return JSON.parse(element.value)
         default:
           return '';
       }
